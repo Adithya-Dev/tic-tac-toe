@@ -208,15 +208,15 @@ void printWinner(char winner)
 {
     if (winner == PLAYER)
     {
-        printf("Player wins!");
+        printf("\nPlayer wins!\n");
     }
     else if (winner == COMPUTER)
     {
-        printf("Computer wins!");
+        printf("\nComputer wins!\n");
     }
     else
     {
-        printf("Its a draw");
+        printf("\nIts a draw\n");
     }
 
 
