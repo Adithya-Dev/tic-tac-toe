@@ -10,12 +10,14 @@ void playerMove();
 void computerMove();
 char checkWinner();
 void printWinner(char);
-void assignCharacters();
+void assignCharactersAndDiffculty();
+void checkComputerPossiblity();
 
 //Global variables
 char board[3][3];
 char PLAYER;
 char COMPUTER;
+char difficulty_level;
 
 
 
@@ -24,7 +26,7 @@ int main()
 {
     char winner = ' ';
 
-    assignCharacters();
+    assignCharactersAndDiffculty();
 
     resetBoard();
 
@@ -127,11 +129,6 @@ void playerMove()
             break;
         }
     } while (board[rows][columns] != ' ');
-    
-
-
-
-
 
     if (board[rows][columns] != ' ')
     {
@@ -146,25 +143,32 @@ void playerMove()
 
 void computerMove()
 {
-    //seed creation based on time
-
-    srand(time(0));
-    int rows;
-    int columns;
-
-    if (checkFreeSpaces > 0)
+    if (difficulty_level == "easy")
     {
-        do
-        {
-            rows = rand() %3 ;
-            columns = rand() % 3;
-        } while (board[rows][columns] != ' ');
+        //seed creation based on time
 
-        board[rows][columns] = COMPUTER;
+        srand(time(0));
+        int rows;
+        int columns;
+
+        if (checkFreeSpaces > 0)
+        {
+            do
+            {
+                rows = rand() %3 ;
+                columns = rand() % 3;
+            } while (board[rows][columns] != ' ');
+
+            board[rows][columns] = COMPUTER;
+        }
+        else
+        {
+            printWinner(' ');
+        }
     }
     else
     {
-        printWinner(' ');
+        //TODO (moha_ad): complete the algorithm
     }
 
 }
@@ -222,7 +226,7 @@ void printWinner(char winner)
 
 }
 
-void assignCharacters()
+void assignCharactersAndDiffculty()
 {
     printf("CAUTION. Always the charcter letters in Capitals. \n");
     printf("What character do you want to asssign the player (X or O): ");
@@ -237,4 +241,23 @@ void assignCharacters()
         COMPUTER = 'X';
 
     }
+
+    printf("CAUTION. Always the charcter letters in lower case. \n");
+    printf("Type the level of difficulty (easy or hard)");
+    scanf("%s", &difficulty_level);
+}
+
+void checkComputerPossiblity()
+{
+    int rows;
+    int columns;
+
+    for (int rows = 0; rows < 3; rows++)
+    {
+        for (int columns = 0; columns < 3; columns++)
+        {
+            
+        }
+    }
+
 }
